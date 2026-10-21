@@ -7,7 +7,11 @@
 <div class="kepala-halaman">
     <div>
         <h1>Pinjaman {{ $pinjaman->anggota->nama ?? '—' }}</h1>
-        <p>Dicairkan {{ $pinjaman->tanggal->format('d/m/Y') }} · {{ $pinjaman->keperluan }}</p>
+        <p>
+            Dicairkan {{ $pinjaman->tanggal->format('d/m/Y') }} · {{ $pinjaman->keperluan }}
+            · Bunga {{ rtrim(rtrim(number_format($pinjaman->bunga_persen, 2, ',', '.'), '0'), ',') }}%/bulan
+            · Tenor {{ $pinjaman->tenor }} bulan
+        </p>
     </div>
     <div style="display: flex; gap: var(--space-2);">
         <a class="btn btn--teks" href="/pinjaman"><svg class="ikon" aria-hidden="true"><use href="#i-kiri"/></svg> Kembali</a>
@@ -24,6 +28,10 @@
     <div class="ringkasan__kotak">
         <p class="ringkasan__label">Pokok</p>
         <p class="ringkasan__nilai">Rp{{ number_format($pinjaman->pokok, 0, ',', '.') }}</p>
+    </div>
+    <div class="ringkasan__kotak">
+        <p class="ringkasan__label">Bunga / bulan</p>
+        <p class="ringkasan__nilai">{{ rtrim(rtrim(number_format($pinjaman->bunga_persen, 2, ',', '.'), '0'), ',') }}%</p>
     </div>
     <div class="ringkasan__kotak">
         <p class="ringkasan__label">Angsuran / bulan</p>

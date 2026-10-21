@@ -34,7 +34,17 @@ total_bayar  = pokok + bunga_total
 angsuran     = total_bayar / tenor
 ```
 
-Contoh: pinjam Rp5.000.000, bunga 1,5%/bulan, tenor 12 bulan → bunga Rp900.000, angsuran Rp491.667/bulan.
+Bunga **bisa diatur per pinjaman**, rentang 0–5% per bulan (default 1,5%). Ada pilihan cepat
+0,5% · 1% · 1,5% · 2% · 3% di halaman simulasi dan formulir pinjaman.
+
+Contoh: pinjam Rp5.000.000, tenor 12 bulan:
+
+| Bunga | Angsuran / bulan | Total bunga |
+| ----- | ---------------- | ----------- |
+| 1%    | Rp458.333         | Rp500.000   |
+| 1,5%  | Rp491.667         | Rp900.000   |
+| 2%    | Rp516.667         | Rp1.200.000 |
+| 3%    | Rp566.667         | Rp1.800.000 |
 
 ## Menjalankan
 

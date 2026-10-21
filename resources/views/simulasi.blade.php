@@ -24,7 +24,16 @@
                 <div class="bidang">
                     <label for="bunga">Bunga per bulan (%)</label>
                     <input type="number" id="bunga" name="bunga" value="{{ $bunga }}" min="0" max="5" step="0.1">
-                    <p class="petunjuk">Bunga flat. Default 1,5% per bulan.</p>
+                    <p class="petunjuk">Bunga flat, bisa diatur 0–5%. Makin kecil, makin ringan angsurannya.</p>
+                    <div class="cip-baris" role="group" aria-label="Pilihan bunga cepat">
+                        @foreach ([0.5, 1, 1.5, 2, 3] as $b)
+                            <a class="cip {{ (float) $bunga === (float) $b ? 'is-aktif' : '' }}"
+                               href="/simulasi?pokok={{ $pokok }}&bunga={{ $b }}&tenor={{ $dipilih }}">
+                                {{ rtrim(rtrim(number_format($b, 1, ',', '.'), '0'), ',') }}%
+                                @if ($b <= 1)<span class="cip__catatan">rendah</span>@endif
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
                 <input type="hidden" name="tenor" value="{{ $dipilih }}">
                 <button class="btn" type="submit" style="width: 100%;">Hitung</button>

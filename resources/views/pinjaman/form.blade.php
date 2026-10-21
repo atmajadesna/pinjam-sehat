@@ -53,6 +53,14 @@
                 <div class="bidang">
                     <label for="bunga_persen">Bunga per bulan (%)</label>
                     <input type="number" id="bunga_persen" name="bunga_persen" value="{{ old('bunga_persen', 1.5) }}" min="0" max="5" step="0.1" required>
+                    <div class="cip-baris" role="group" aria-label="Pilihan bunga cepat">
+                        @foreach ([0.5, 1, 1.5, 2, 3] as $b)
+                            <button class="cip" type="button" data-bunga="{{ $b }}">
+                                {{ rtrim(rtrim(number_format($b, 1, ',', '.'), '0'), ',') }}%
+                                @if ($b <= 1)<span class="cip__catatan">rendah</span>@endif
+                            </button>
+                        @endforeach
+                    </div>
                     @error('bunga_persen') <p class="galat">{{ $message }}</p> @enderror
                 </div>
 
@@ -107,6 +115,15 @@
         outB.textContent = rupiah(bungaTotal);
         outT.textContent = rupiah(total);
     }
+
+    document.querySelectorAll('.cip[data-bunga]').forEach((tombol) => {
+        tombol.addEventListener('click', () => {
+            bunga.value = tombol.dataset.bunga;
+            document.querySelectorAll('.cip[data-bunga]').forEach((t) => t.classList.remove('is-aktif'));
+            tombol.classList.add('is-aktif');
+            hitung();
+        });
+    });
 
     [pokok, tenor, bunga].forEach((el) => el.addEventListener('input', hitung));
     hitung();

@@ -721,3 +721,40 @@ input[type="number"] { font-family: var(--font-mono); }
 }
 .peran--admin { background: var(--color-accent-soft); color: var(--color-accent-strong); }
 .peran--petugas { background: var(--color-paper-3); color: var(--color-muted); }
+
+/* ---------- pilihan cepat (cip) ---------- */
+
+.cip-baris {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+}
+
+.cip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    height: 30px;
+    padding: 0 0.8rem;
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-body);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background var(--dur) var(--ease-out), color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+.cip:hover { border-color: var(--color-accent); color: var(--color-accent-strong); }
+.cip.is-aktif { background: var(--color-accent-soft); border-color: var(--color-accent); color: var(--color-accent-strong); }
+
+.cip__catatan {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
