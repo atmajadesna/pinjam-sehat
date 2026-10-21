@@ -36,7 +36,7 @@ class PinjamanController extends Controller
             'anggota_id' => ['required', 'exists:anggota,id'],
             'pokok' => ['required', 'numeric', 'min:500000', 'max:50000000'],
             'tenor' => ['required', 'integer', 'in:3,6,12,18,24'],
-            'bunga_persen' => ['required', 'numeric', 'min:0', 'max:5'],
+            'bunga_persen' => ['required', 'numeric', 'min:' . Kalkulator::BUNGA_MIN, 'max:' . Kalkulator::BUNGA_MAKS],
             'keperluan' => ['required', 'string', 'max:80'],
             'tanggal' => ['required', 'date'],
         ]);
@@ -73,9 +73,12 @@ class PinjamanController extends Controller
             return back()->with('sukses', 'Semua angsuran sudah lunas.');
         }
 
+        $denda = Kalkulator::denda((int) $berikut->jumlah, $berikut->hari_telat);
+
         $berikut->update([
             'status' => 'Lunas',
             'tanggal_bayar' => now()->toDateString(),
+            'denda' => $denda,
         ]);
 
         if (! $pinjaman->angsuran()->where('status', 'Belum bayar')->exists()) {

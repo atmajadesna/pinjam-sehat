@@ -34,17 +34,21 @@ total_bayar  = pokok + bunga_total
 angsuran     = total_bayar / tenor
 ```
 
-Bunga **bisa diatur per pinjaman**, rentang 0–5% per bulan (default 1,5%). Ada pilihan cepat
-0,5% · 1% · 1,5% · 2% · 3% di halaman simulasi dan formulir pinjaman.
+Bunga **bisa diatur per pinjaman**, rentang **0,5–3% per bulan** (default 2%). Batas atas
+mengikuti aturan OJK: manfaat ekonomi maksimum **0,1% per hari** ≈ 3% per bulan.
+
+Pilihan cepat 0,5% · 1% · 1,5% · 2% · 2,5% · 3% tersedia di halaman simulasi dan formulir pinjaman.
+Halaman simulasi juga menampilkan **bunga efektif tahunan** (IRR) supaya bisa dibandingkan
+dengan penawaran lain, dan **denda 0,1% per hari** untuk angsuran yang lewat jatuh tempo.
 
 Contoh: pinjam Rp5.000.000, tenor 12 bulan:
 
-| Bunga | Angsuran / bulan | Total bunga |
-| ----- | ---------------- | ----------- |
-| 1%    | Rp458.333         | Rp500.000   |
-| 1,5%  | Rp491.667         | Rp900.000   |
-| 2%    | Rp516.667         | Rp1.200.000 |
-| 3%    | Rp566.667         | Rp1.800.000 |
+| Bunga | Angsuran / bulan | Total bunga | Efektif / tahun |
+| ----- | ---------------- | ----------- | --------------- |
+| 1%    | Rp458.333         | Rp500.000   | 21,5%           |
+| 1,5%  | Rp491.667         | Rp900.000   | 31,7%           |
+| 2%    | Rp516.667         | Rp1.200.000 | 41,7%           |
+| 3%    | Rp566.667         | Rp1.800.000 | 60,9%           |
 
 ## Menjalankan
 

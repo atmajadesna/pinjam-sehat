@@ -52,9 +52,10 @@
 
                 <div class="bidang">
                     <label for="bunga_persen">Bunga per bulan (%)</label>
-                    <input type="number" id="bunga_persen" name="bunga_persen" value="{{ old('bunga_persen', 1.5) }}" min="0" max="5" step="0.1" required>
+                    <input type="number" id="bunga_persen" name="bunga_persen" value="{{ old('bunga_persen', 2) }}" min="0.5" max="3" step="0.1" required>
+                    <p class="petunjuk">0,5–3% per bulan (batas OJK 0,1%/hari).</p>
                     <div class="cip-baris" role="group" aria-label="Pilihan bunga cepat">
-                        @foreach ([0.5, 1, 1.5, 2, 3] as $b)
+                        @foreach ([0.5, 1, 1.5, 2, 2.5, 3] as $b)
                             <button class="cip" type="button" data-bunga="{{ $b }}">
                                 {{ rtrim(rtrim(number_format($b, 1, ',', '.'), '0'), ',') }}%
                                 @if ($b <= 1)<span class="cip__catatan">rendah</span>@endif

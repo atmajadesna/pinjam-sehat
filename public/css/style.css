@@ -543,7 +543,7 @@ input[type="number"] { font-family: var(--font-mono); }
 /* ringkasan angsuran */
 .ringkasan {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 148px), 1fr));
     gap: var(--space-3);
     margin-bottom: var(--space-5);
 }
@@ -757,4 +757,35 @@ input[type="number"] { font-family: var(--font-mono); }
     letter-spacing: 0.05em;
     text-transform: uppercase;
     opacity: 0.7;
+}
+
+/* ---------- bar sorotan (angka penting di luar grid) ---------- */
+
+.sorot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35em 0.6em;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius);
+    background: var(--color-accent-soft);
+    margin-bottom: var(--space-4);
+}
+.sorot__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-accent-strong);
+}
+.sorot__nilai {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--color-accent-strong);
+}
+.sorot__ket {
+    flex: 1 1 16rem;
+    font-size: var(--text-xs);
+    color: var(--color-body);
 }

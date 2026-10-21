@@ -63,6 +63,7 @@
                         <th>Jatuh tempo</th>
                         <th class="hp-sembunyi">Tanggal bayar</th>
                         <th class="num">Jumlah</th>
+                        <th class="num">Denda</th>
                         <th>Status</th>
                         <th class="num kolom-aksi">Aksi</th>
                     </tr>
@@ -75,6 +76,17 @@
                             <td>{{ $a->jatuh_tempo->format('d/m/Y') }}</td>
                             <td class="hp-sembunyi">{{ $a->tanggal_bayar ? $a->tanggal_bayar->format('d/m/Y') : '—' }}</td>
                             <td class="num">Rp{{ number_format($a->jumlah, 0, ',', '.') }}</td>
+                            <td class="num">
+                                @if ($a->denda > 0)
+                                    Rp{{ number_format($a->denda, 0, ',', '.') }}
+                                @elseif ($a->denda_terhitung > 0)
+                                    <span class="redup" title="Berjalan 0,1%/hari, {{ $a->hari_telat }} hari">
+                                        Rp{{ number_format($a->denda_terhitung, 0, ',', '.') }}
+                                    </span>
+                                @else
+                                    <span class="redup">—</span>
+                                @endif
+                            </td>
                             <td>
                                 <span class="lencana {{ $a->status === 'Lunas' ? 'lencana--lunas' : 'lencana--belum' }}">{{ $a->status }}</span>
                             </td>

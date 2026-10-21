@@ -23,10 +23,13 @@
                 </div>
                 <div class="bidang">
                     <label for="bunga">Bunga per bulan (%)</label>
-                    <input type="number" id="bunga" name="bunga" value="{{ $bunga }}" min="0" max="5" step="0.1">
-                    <p class="petunjuk">Bunga flat, bisa diatur 0–5%. Makin kecil, makin ringan angsurannya.</p>
+                    <input type="number" id="bunga" name="bunga" value="{{ $bunga }}" min="0.5" max="3" step="0.1">
+                    <p class="petunjuk">
+                        Bunga flat 0,5–3% per bulan. Batas atas mengikuti aturan OJK
+                        (0,1% per hari &asymp; 3% per bulan).
+                    </p>
                     <div class="cip-baris" role="group" aria-label="Pilihan bunga cepat">
-                        @foreach ([0.5, 1, 1.5, 2, 3] as $b)
+                        @foreach ([0.5, 1, 1.5, 2, 2.5, 3] as $b)
                             <a class="cip {{ (float) $bunga === (float) $b ? 'is-aktif' : '' }}"
                                href="/simulasi?pokok={{ $pokok }}&bunga={{ $b }}&tenor={{ $dipilih }}">
                                 {{ rtrim(rtrim(number_format($b, 1, ',', '.'), '0'), ',') }}%
@@ -45,7 +48,10 @@
         <section class="panel">
             <div class="panel__kepala">
                 <h2>Angsuran per tenor</h2>
-                <span class="lencana lencana--aktif">Bunga flat {{ rtrim(rtrim(number_format($bunga, 2, ',', '.'), '0'), ',') }}%/bulan</span>
+                <span class="lencana lencana--aktif">
+                    Bunga flat {{ rtrim(rtrim(number_format($bunga, 2, ',', '.'), '0'), ',') }}%/bulan
+                    &middot; {{ number_format(App\Support\Kalkulator::perHari($bunga), 3, ',', '.') }}%/hari
+                </span>
             </div>
             <div class="panel__badan">
                 <div class="tenor-grid">
@@ -89,6 +95,17 @@
                             <p class="ringkasan__label">Total dibayar</p>
                             <p class="ringkasan__nilai">Rp{{ number_format($rincian['total_bayar'], 0, ',', '.') }}</p>
                         </div>
+                    </div>
+
+                    <div class="sorot">
+                        <span class="sorot__label">Bunga efektif / tahun</span>
+                        <span class="sorot__nilai">
+                            {{ number_format(App\Support\Kalkulator::efektifTahunan($rincian['pokok'], $rincian['tenor'], $bunga), 1, ',', '.') }}%
+                        </span>
+                        <span class="sorot__ket">
+                            Bunga efektif tahunan — dipakai untuk membandingkan penawaran.
+                            Telat bayar kena denda 0,1% per hari.
+                        </span>
                     </div>
 
                     <div class="tabel-bungkus">
