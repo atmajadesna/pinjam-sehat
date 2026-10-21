@@ -79,8 +79,8 @@
             </div>
 
             <div class="form-aksi">
-                <button class="btn" type="submit">Setujui &amp; buat jadwal</button>
-                <a class="btn btn--halus" href="/pinjaman">Batal</a>
+                <button class="btn" type="submit"><svg class="ikon" aria-hidden="true"><use href="#i-cek"/></svg> Setujui &amp; buat jadwal</button>
+                <a class="btn btn--teks" href="/pinjaman">Batal</a>
             </div>
         </form>
     </div>

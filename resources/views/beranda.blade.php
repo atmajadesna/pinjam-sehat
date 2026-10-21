@@ -14,7 +14,7 @@
         </p>
         <div class="form-aksi">
             <a class="btn" href="/simulasi">Hitung angsuran</a>
-            <a class="btn btn--halus" href="/pinjaman/baru">Ajukan pinjaman</a>
+            <a class="btn btn--garis" href="/pinjaman/baru">Ajukan pinjaman</a>
         </div>
     </div>
     @include('partials.ilustrasi')
@@ -38,7 +38,7 @@
 <section class="panel">
     <div class="panel__kepala">
         <h2>Kalau pinjam Rp5.000.000, angsurannya segini</h2>
-        <a class="btn btn--halus btn--kecil" href="/simulasi">Ubah nominal</a>
+        <a class="btn btn--tonal btn--mini" href="/simulasi">Ubah nominal</a>
     </div>
     <div class="panel__badan">
         <p style="color: var(--color-muted); font-size: var(--text-sm); margin-bottom: var(--space-4);">
@@ -59,7 +59,7 @@
 <section class="panel">
     <div class="panel__kepala">
         <h2>Pinjaman terbaru</h2>
-        <a class="btn btn--halus btn--kecil" href="/pinjaman">Lihat semua</a>
+        <a class="btn btn--teks btn--mini" href="/pinjaman">Lihat semua <svg class="ikon" aria-hidden="true"><use href="#i-kanan"/></svg></a>
     </div>
     <div class="panel__badan panel__badan--rapat">
         <div class="tabel-bungkus">

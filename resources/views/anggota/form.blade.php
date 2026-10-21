@@ -53,8 +53,8 @@
             </div>
 
             <div class="form-aksi">
-                <button class="btn" type="submit">Simpan</button>
-                <a class="btn btn--halus" href="/anggota">Batal</a>
+                <button class="btn" type="submit"><svg class="ikon" aria-hidden="true"><use href="#i-cek"/></svg> Simpan</button>
+                <a class="btn btn--teks" href="/anggota">Batal</a>
             </div>
         </form>
     </div>

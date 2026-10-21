@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
 </head>
 <body>
+@include('partials.ikon')
 <a class="lewati" href="#isi">Lewati ke isi</a>
 
 <header class="topbar">
@@ -41,7 +42,7 @@
                 <span class="pengguna">{{ session('pengguna.nama') }}</span>
                 <form method="POST" action="/logout">
                     @csrf
-                    <button class="btn btn--halus btn--kecil" type="submit">Keluar</button>
+                    <button class="btn btn--teks btn--mini" type="submit"><svg class="ikon" aria-hidden="true"><use href="#i-keluar"/></svg> Keluar</button>
                 </form>
             @else
                 <a class="btn btn--kecil" href="/login">Masuk</a>

@@ -10,11 +10,11 @@
         <p>Dicairkan {{ $pinjaman->tanggal->format('d/m/Y') }} · {{ $pinjaman->keperluan }}</p>
     </div>
     <div style="display: flex; gap: var(--space-2);">
-        <a class="btn btn--halus" href="/pinjaman">Kembali</a>
+        <a class="btn btn--teks" href="/pinjaman"><svg class="ikon" aria-hidden="true"><use href="#i-kiri"/></svg> Kembali</a>
         @if ($pinjaman->status !== 'Lunas')
             <form method="POST" action="/pinjaman/{{ $pinjaman->id }}/bayar">
                 @csrf
-                <button class="btn" type="submit">Terima angsuran berikutnya</button>
+                <button class="btn" type="submit"><svg class="ikon" aria-hidden="true"><use href="#i-cek"/></svg> Terima angsuran berikutnya</button>
             </form>
         @endif
     </div>
@@ -53,10 +53,10 @@
                     <tr>
                         <th class="num">Ke</th>
                         <th>Jatuh tempo</th>
-                        <th>Tanggal bayar</th>
+                        <th class="hp-sembunyi">Tanggal bayar</th>
                         <th class="num">Jumlah</th>
                         <th>Status</th>
-                        <th class="num">Aksi</th>
+                        <th class="num kolom-aksi">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,17 +65,17 @@
                         <tr>
                             <td class="num">{{ $a->angsuran_ke }}</td>
                             <td>{{ $a->jatuh_tempo->format('d/m/Y') }}</td>
-                            <td>{{ $a->tanggal_bayar ? $a->tanggal_bayar->format('d/m/Y') : '—' }}</td>
+                            <td class="hp-sembunyi">{{ $a->tanggal_bayar ? $a->tanggal_bayar->format('d/m/Y') : '—' }}</td>
                             <td class="num">Rp{{ number_format($a->jumlah, 0, ',', '.') }}</td>
                             <td>
                                 <span class="lencana {{ $a->status === 'Lunas' ? 'lencana--lunas' : 'lencana--belum' }}">{{ $a->status }}</span>
                             </td>
-                            <td class="num">
+                            <td class="num kolom-aksi">
                                 @if ($a->status !== 'Lunas' && ! $sudahAdaTombol)
                                     @php $sudahAdaTombol = true; @endphp
                                     <form method="POST" action="/pinjaman/{{ $pinjaman->id }}/bayar">
                                         @csrf
-                                        <button type="submit" class="btn btn--kecil">Bayar</button>
+                                        <button type="submit" class="btn btn--mini"><svg class="ikon" aria-hidden="true"><use href="#i-cek"/></svg> Bayar</button>
                                     </form>
                                 @else
                                     <span class="redup">—</span>
