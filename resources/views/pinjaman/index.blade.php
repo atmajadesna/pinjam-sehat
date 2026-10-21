@@ -25,10 +25,10 @@
             <table class="data">
                 <thead>
                     <tr>
-                        <th class="hp-sembunyi">Tanggal</th>
+                        <th class="tablet-sembunyi">Tanggal</th>
                         <th>Anggota</th>
                         <th class="num">Pokok</th>
-                        <th class="num hp-sembunyi">Tenor</th>
+                        <th class="num tablet-sembunyi">Tenor</th>
                         <th class="num">Angsuran</th>
                         <th class="num hp-sembunyi">Sisa</th>
                         <th>Status</th>
@@ -38,10 +38,10 @@
                 <tbody>
                     @forelse ($daftar as $p)
                         <tr>
-                            <td class="num hp-sembunyi" style="text-align: left;">{{ $p->tanggal->format('d/m/Y') }}</td>
+                            <td class="num tablet-sembunyi" style="text-align: left;">{{ $p->tanggal->format('d/m/Y') }}</td>
                             <td>{{ $p->anggota->nama ?? '—' }}</td>
                             <td class="num">Rp{{ number_format($p->pokok, 0, ',', '.') }}</td>
-                            <td class="num hp-sembunyi">{{ $p->tenor }} bln</td>
+                            <td class="num tablet-sembunyi">{{ $p->tenor }} bln</td>
                             <td class="num">Rp{{ number_format($p->angsuran_bulanan, 0, ',', '.') }}</td>
                             <td class="num hp-sembunyi">Rp{{ number_format($p->sisa, 0, ',', '.') }}</td>
                             <td>

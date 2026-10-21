@@ -6,10 +6,14 @@ Live demo: https://pinjamsehat.laura.web.id
 
 ## Akun demo
 
-| Peran   | Username | Password   |
-| ------- | -------- | ---------- |
-| Admin   | `admin`  | `admin123` |
-| Petugas | `petugas`| `petugas123` |
+| Peran   | Username  | Password     | Bisa apa                                                                 |
+| ------- | --------- | ------------ | ------------------------------------------------------------------------ |
+| Admin   | `admin`   | `admin123`   | Semua: kelola anggota, buat pinjaman, terima angsuran, lihat laporan      |
+| Petugas | `petugas` | `petugas123` | Operasional: lihat anggota, buat pinjaman, terima angsuran — tanpa laporan |
+
+Pembatasan peran dijaga di dua tempat: middleware `admin` pada route, dan tampilan
+(tombol/menu disembunyikan). Petugas yang memaksa buka `/laporan` atau `/anggota/tambah`
+tetap kena **403**.
 
 ## Fitur
 

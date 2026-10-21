@@ -23,7 +23,6 @@
             @include('partials.mark')
             <span class="merek__teks">
                 <strong>Pinjam Sehat</strong>
-                <span class="merek__tag">Kelompok 15</span>
             </span>
         </a>
 
@@ -33,13 +32,18 @@
             @if (session()->has('pengguna'))
                 <a href="/anggota" @class(['nav__tautan', 'is-aktif' => request()->is('anggota*')])>Anggota</a>
                 <a href="/pinjaman" @class(['nav__tautan', 'is-aktif' => request()->is('pinjaman*')])>Pinjaman</a>
-                <a href="/laporan" @class(['nav__tautan', 'is-aktif' => request()->is('laporan')])>Laporan</a>
+                @if (session('pengguna.peran') === 'admin')
+                    <a href="/laporan" @class(['nav__tautan', 'is-aktif' => request()->is('laporan')])>Laporan</a>
+                @endif
             @endif
         </nav>
 
         <div class="topbar__aksi">
             @if (session()->has('pengguna'))
-                <span class="pengguna">{{ session('pengguna.nama') }}</span>
+                <span class="pengguna">
+                    {{ session('pengguna.nama') }}
+                    <span class="peran peran--{{ session('pengguna.peran') }}">{{ session('pengguna.peran') }}</span>
+                </span>
                 <form method="POST" action="/logout">
                     @csrf
                     <button class="btn btn--teks btn--mini" type="submit"><svg class="ikon" aria-hidden="true"><use href="#i-keluar"/></svg> Keluar</button>
@@ -61,7 +65,7 @@
 <footer class="kaki">
     <div class="kaki__dalam">
         <p class="kaki__pernyataan">Pinjam sehat: tahu angsurannya sebelum tanda tangan.</p>
-        <p class="kaki__kecil">Pinjam Sehat — Sistem Informasi Pinjaman · Kelompok 15 · {{ date('Y') }}</p>
+        <p class="kaki__kecil">Pinjam Sehat — Sistem Informasi Pinjaman · {{ date('Y') }}</p>
     </div>
 </footer>
 </body>

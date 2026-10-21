@@ -89,6 +89,7 @@ a { color: var(--color-accent-strong); text-decoration: none; }
 }
 
 .merek__tag {
+    display: none;
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.08em;
@@ -695,7 +696,28 @@ input[type="number"] { font-family: var(--font-mono); }
     gap: var(--space-1);
 }
 
+@media (max-width: 1024px) {
+    .tablet-sembunyi { display: none !important; }
+}
+
 @media (max-width: 780px) {
     .segmen { width: 100%; justify-content: space-between; }
     .segmen__item { flex: 1 1 auto; justify-content: center; padding: 0 0.6rem; }
 }
+
+/* ---------- lencana peran ---------- */
+
+.peran {
+    display: inline-block;
+    margin-left: 0.4em;
+    padding: 1px 0.5em;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    vertical-align: 1px;
+}
+.peran--admin { background: var(--color-accent-soft); color: var(--color-accent-strong); }
+.peran--petugas { background: var(--color-paper-3); color: var(--color-muted); }
